@@ -1,0 +1,25 @@
+# Dependências
+node_modules/
+
+# Builds gerados (não precisam ficar no repositório)
+android/app/build/
+ios/App/build/
+ios/App/Pods/
+ios/App/DerivedData/
+
+# Keystore — NUNCA subir para o GitHub (confidencial)
+android/app/*.keystore
+android/app/*.jks
+android/keystore.properties
+
+# Arquivos do sistema
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs
+*.log
+npm-debug.log*
+
+# Script auxiliar de ícones (não é parte do app)
+generate-icons.mjs

@@ -1,0 +1,27 @@
+{
+  "name": "Dr. LinkedIn",
+  "short_name": "Dr. LinkedIn",
+  "description": "Transforme o seu LinkedIn em uma máquina de vendas. Aprenda a fazer negócios pelo LinkedIn com mais autoridade na sua área.",
+  "start_url": "./App%20Dr.%20LinkedIn.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0F1B2E",
+  "theme_color": "#0F1B2E",
+  "lang": "pt-BR",
+  "categories": ["business", "productivity", "education"],
+  "icons": [
+    {
+      "src": "assets/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "assets/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

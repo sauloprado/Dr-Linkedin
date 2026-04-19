@@ -1,0 +1,1174 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Dr. LinkedIn — Documento Executivo do Projeto</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy-900: #0F1B2E;
+    --navy-800: #142339;
+    --navy-700: #1A2D47;
+    --gold-500: #D4A53A;
+    --gold-400: #E3B94E;
+    --gold-100: #F5E6B8;
+    --ink-900: #1b1b1b;
+    --ink-700: #3a3a3a;
+    --ink-500: #666;
+    --ink-300: #aaa;
+    --paper: #fbfaf5;
+    --paper-2: #f5f1e6;
+    --hairline: #e5ddc7;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    background: #2a2a2a;
+    font-family: 'Inter', system-ui, sans-serif;
+    color: var(--ink-900);
+    -webkit-font-smoothing: antialiased;
+    font-size: 11pt;
+    line-height: 1.55;
+  }
+
+  .page {
+    background: var(--paper);
+    width: 210mm;
+    min-height: 297mm;
+    margin: 20px auto;
+    padding: 22mm 20mm;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+    position: relative;
+    page-break-after: always;
+  }
+  .page:last-child { page-break-after: auto; }
+
+  h1, h2, h3, h4 {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 600;
+    color: var(--navy-900);
+    letter-spacing: -0.005em;
+    margin: 0;
+  }
+
+  h1.cover-title {
+    font-size: 58pt;
+    line-height: 0.95;
+    margin-bottom: 14px;
+    color: var(--navy-900);
+  }
+  h1.cover-title em {
+    color: var(--gold-500);
+    font-style: italic;
+    display: block;
+  }
+
+  h2.section {
+    font-size: 28pt;
+    line-height: 1.1;
+    color: var(--navy-900);
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--gold-500);
+    margin: 0 0 18px;
+  }
+  h2.section .num {
+    font-family: 'Inter', sans-serif;
+    font-size: 11pt;
+    font-weight: 500;
+    color: var(--gold-500);
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 6px;
+  }
+
+  h3 {
+    font-size: 17pt;
+    color: var(--navy-900);
+    margin: 22px 0 8px;
+    line-height: 1.2;
+  }
+  h4 {
+    font-size: 13pt;
+    color: var(--navy-900);
+    margin: 16px 0 6px;
+  }
+
+  p { margin: 0 0 10px; }
+
+  a { color: var(--navy-800); text-decoration: underline; }
+
+  .label {
+    font-family: 'Inter', sans-serif;
+    font-size: 9pt;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold-500);
+  }
+
+  .muted { color: var(--ink-500); }
+  .tiny { font-size: 9pt; }
+
+  ul, ol { margin: 6px 0 14px; padding-left: 22px; }
+  li { margin-bottom: 5px; }
+
+  ul.clean { list-style: none; padding-left: 0; }
+  ul.clean li {
+    padding-left: 22px;
+    position: relative;
+    margin-bottom: 7px;
+  }
+  ul.clean li::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 8px;
+    width: 6px; height: 6px;
+    background: var(--gold-500);
+    border-radius: 50%;
+  }
+
+  /* Cover */
+  .cover {
+    background: linear-gradient(180deg, var(--navy-900) 0%, #091220 100%);
+    color: #fff;
+    padding: 30mm 20mm;
+    position: relative;
+    overflow: hidden;
+  }
+  .cover::before {
+    content: '';
+    position: absolute; top: -50%; right: -30%;
+    width: 700px; height: 700px;
+    background: radial-gradient(circle, rgba(212,165,58,0.12), transparent 60%);
+    pointer-events: none;
+  }
+  .cover h1 { color: #fff; }
+  .cover h1 em { color: var(--gold-400); }
+  .cover .label { color: var(--gold-400); }
+  .cover p { color: rgba(255,255,255,0.8); }
+
+  .cover-meta {
+    margin-top: auto;
+    padding-top: 32px;
+    border-top: 1px solid rgba(212,165,58,0.3);
+    display: flex;
+    gap: 40px;
+    flex-wrap: wrap;
+  }
+  .cover-meta > div { min-width: 120px; }
+  .cover-meta .label { font-size: 8.5pt; margin-bottom: 4px; display: block; }
+  .cover-meta .value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 15pt;
+    font-weight: 600;
+    color: #fff;
+  }
+
+  .cover-body {
+    display: flex;
+    flex-direction: column;
+    min-height: calc(297mm - 60mm);
+  }
+
+  .cover-spacer { flex: 1; min-height: 80px; }
+
+  /* TOC */
+  .toc-item {
+    display: flex;
+    align-items: baseline;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--hairline);
+  }
+  .toc-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22pt;
+    color: var(--gold-500);
+    width: 60px;
+    flex-shrink: 0;
+    line-height: 1;
+  }
+  .toc-body { flex: 1; }
+  .toc-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 16pt;
+    font-weight: 600;
+    color: var(--navy-900);
+    line-height: 1.2;
+  }
+  .toc-subtitle {
+    font-size: 10pt;
+    color: var(--ink-500);
+    margin-top: 2px;
+  }
+  .toc-page {
+    font-family: 'Inter', sans-serif;
+    font-size: 10pt;
+    color: var(--ink-500);
+    letter-spacing: 0.1em;
+  }
+
+  /* Callout */
+  .callout {
+    background: var(--paper-2);
+    border-left: 3px solid var(--gold-500);
+    padding: 14px 18px;
+    margin: 14px 0;
+    border-radius: 2px;
+  }
+  .callout .label { margin-bottom: 4px; display: block; }
+  .callout p:last-child { margin-bottom: 0; }
+
+  .callout-dark {
+    background: var(--navy-900);
+    color: #fff;
+    padding: 18px 22px;
+    margin: 14px 0;
+    border-radius: 4px;
+  }
+  .callout-dark .label { color: var(--gold-400); display: block; margin-bottom: 6px; }
+  .callout-dark p { color: rgba(255,255,255,0.88); margin: 0; }
+  .callout-dark h4 { color: var(--gold-400); margin: 0 0 6px; }
+
+  /* Two columns */
+  .cols-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+    margin: 14px 0;
+  }
+
+  .mini-card {
+    background: var(--paper-2);
+    padding: 14px 16px;
+    border-radius: 4px;
+    border: 1px solid var(--hairline);
+  }
+  .mini-card .label { display: block; margin-bottom: 4px; }
+  .mini-card h4 { font-size: 12pt; margin: 0 0 4px; }
+  .mini-card p { font-size: 10pt; color: var(--ink-700); margin: 0; }
+
+  /* Tables */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 12px 0;
+    font-size: 10pt;
+  }
+  th, td {
+    text-align: left;
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--hairline);
+    vertical-align: top;
+  }
+  th {
+    font-family: 'Inter', sans-serif;
+    font-size: 9pt;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--navy-900);
+    background: var(--paper-2);
+    border-bottom: 2px solid var(--gold-500);
+  }
+  tr:last-child td { border-bottom: none; }
+  td.num { font-variant-numeric: tabular-nums; white-space: nowrap; }
+  td strong { color: var(--navy-900); }
+
+  /* Timeline */
+  .timeline {
+    margin: 16px 0;
+    border-left: 2px solid var(--gold-500);
+    padding-left: 20px;
+  }
+  .timeline-item { position: relative; margin-bottom: 18px; }
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -26px;
+    top: 6px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--gold-500);
+    border: 2px solid var(--paper);
+  }
+  .timeline-week {
+    font-family: 'Inter', sans-serif;
+    font-size: 9pt;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gold-500);
+  }
+  .timeline-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 14pt;
+    font-weight: 600;
+    color: var(--navy-900);
+    margin: 2px 0 4px;
+  }
+  .timeline-desc { font-size: 10pt; color: var(--ink-700); margin: 0; }
+
+  /* Footer */
+  .page-footer {
+    position: absolute;
+    bottom: 10mm;
+    left: 20mm;
+    right: 20mm;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 8px;
+    border-top: 1px solid var(--hairline);
+    font-size: 8.5pt;
+    color: var(--ink-500);
+    letter-spacing: 0.06em;
+  }
+  .page-footer .brand {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 11pt;
+    color: var(--navy-900);
+    font-weight: 600;
+    letter-spacing: 0;
+  }
+
+  .pull-quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 18pt;
+    line-height: 1.3;
+    color: var(--navy-900);
+    padding: 14px 0;
+    border-top: 1px solid var(--gold-500);
+    border-bottom: 1px solid var(--gold-500);
+    margin: 20px 0;
+  }
+
+  .risk {
+    display: flex;
+    gap: 14px;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--hairline);
+  }
+  .risk-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22pt;
+    color: var(--gold-500);
+    line-height: 1;
+    flex-shrink: 0;
+    width: 30px;
+  }
+  .risk h4 { margin: 0 0 4px; font-size: 12pt; }
+  .risk p { margin: 0; font-size: 10pt; color: var(--ink-700); }
+
+  /* Print */
+  @media print {
+    html, body { background: #fff; }
+    .page {
+      margin: 0;
+      box-shadow: none;
+      width: auto;
+      min-height: auto;
+    }
+    .no-print { display: none !important; }
+  }
+
+  .print-btn {
+    position: fixed;
+    top: 20px; right: 20px;
+    z-index: 100;
+    padding: 12px 20px;
+    background: var(--navy-900);
+    color: var(--gold-400);
+    border: 1px solid var(--gold-500);
+    border-radius: 6px;
+    font-family: 'Inter', sans-serif;
+    font-size: 11pt;
+    font-weight: 600;
+    cursor: pointer;
+    letter-spacing: 0.04em;
+  }
+  .print-btn:hover { background: var(--navy-800); }
+</style>
+</head>
+<body>
+
+<button class="print-btn no-print" onclick="window.print()">Salvar como PDF ⇣</button>
+
+<!-- ═══════════ PÁGINA 1 — CAPA ═══════════ -->
+<section class="page cover">
+  <div class="cover-body">
+    <span class="label">Documento Executivo · Abril 2026</span>
+    <div style="height: 70px;"></div>
+    <h1 class="cover-title">
+      Dr. LinkedIn
+      <em>App Mobile</em>
+    </h1>
+    <p style="font-size: 14pt; max-width: 420px; margin-top: 10px; line-height: 1.5; font-family: 'Cormorant Garamond', serif; font-style: italic;">
+      Visão de produto, entregáveis, monetização e roteiro para publicação nas lojas Google Play e App Store.
+    </p>
+
+    <div class="cover-spacer"></div>
+
+    <div class="cover-meta">
+      <div>
+        <span class="label">Projeto</span>
+        <div class="value">Aplicativo Dr. LinkedIn</div>
+      </div>
+      <div>
+        <span class="label">Cliente</span>
+        <div class="value">Alessandro Feijó</div>
+      </div>
+      <div>
+        <span class="label">Versão</span>
+        <div class="value">1.0 — Protótipo</div>
+      </div>
+      <div>
+        <span class="label">Data</span>
+        <div class="value">Abril 2026</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ PÁGINA 2 — SUMÁRIO ═══════════ -->
+<section class="page">
+  <h2 class="section">
+    <span class="num">01</span>
+    Sumário
+  </h2>
+
+  <div class="toc-item">
+    <div class="toc-num">01</div>
+    <div class="toc-body">
+      <div class="toc-title">Contexto do projeto</div>
+      <div class="toc-subtitle">Quem é o Dr. LinkedIn e o porquê do app</div>
+    </div>
+    <div class="toc-page">p. 3</div>
+  </div>
+
+  <div class="toc-item">
+    <div class="toc-num">02</div>
+    <div class="toc-body">
+      <div class="toc-title">O que foi entregue</div>
+      <div class="toc-subtitle">Estrutura, telas, identidade visual</div>
+    </div>
+    <div class="toc-page">p. 4</div>
+  </div>
+
+  <div class="toc-item">
+    <div class="toc-num">03</div>
+    <div class="toc-body">
+      <div class="toc-title">Arquitetura e links ativos</div>
+      <div class="toc-subtitle">Destinos externos e fluxos de conversão</div>
+    </div>
+    <div class="toc-page">p. 5</div>
+  </div>
+
+  <div class="toc-item">
+    <div class="toc-num">04</div>
+    <div class="toc-body">
+      <div class="toc-title">Monetização</div>
+      <div class="toc-subtitle">Três caminhos — vitrine, checkout e assinatura</div>
+    </div>
+    <div class="toc-page">p. 6</div>
+  </div>
+
+  <div class="toc-item">
+    <div class="toc-num">05</div>
+    <div class="toc-body">
+      <div class="toc-title">Publicação nas lojas</div>
+      <div class="toc-subtitle">Fase 1 — Preparação</div>
+    </div>
+    <div class="toc-page">p. 7</div>
+  </div>
+
+  <div class="toc-item">
+    <div class="toc-num">06</div>
+    <div class="toc-body">
+      <div class="toc-title">Empacotamento técnico</div>
+      <div class="toc-subtitle">Fase 2 — Capacitor, builds, assinaturas</div>
+    </div>
+    <div class="toc-page">p. 8</div>
+  </div>
+
+  <div class="toc-item">
+    <div class="toc-num">07</div>
+    <div class="toc-body">
+      <div class="toc-title">Submissão e revisão</div>
+      <div class="toc-subtitle">Fase 3 — Google Play e App Store</div>
+    </div>
+    <div class="toc-page">p. 9</div>
+  </div>
+
+  <div class="toc-item">
+    <div class="toc-num">08</div>
+    <div class="toc-body">
+      <div class="toc-title">Custos, riscos e cronograma</div>
+      <div class="toc-subtitle">Orçamento estimado e linha do tempo</div>
+    </div>
+    <div class="toc-page">p. 10</div>
+  </div>
+
+  <div class="toc-item">
+    <div class="toc-num">09</div>
+    <div class="toc-body">
+      <div class="toc-title">Próximos passos recomendados</div>
+      <div class="toc-subtitle">O caminho mais pragmático a partir daqui</div>
+    </div>
+    <div class="toc-page">p. 11</div>
+  </div>
+
+  <div class="page-footer">
+    <span class="brand">Dr. LinkedIn</span>
+    <span>2 · Documento Executivo</span>
+  </div>
+</section>
+
+<!-- ═══════════ PÁGINA 3 — CONTEXTO ═══════════ -->
+<section class="page">
+  <h2 class="section">
+    <span class="num">01 · Contexto</span>
+    Contexto do projeto
+  </h2>
+
+  <h3>Quem é o Dr. LinkedIn</h3>
+  <p>
+    <strong>Alessandro Feijó</strong> é publicitário, baseado em Salvador (BA), com mais de 20 anos de carreira em vendas. Posiciona-se como especialista em LinkedIn desde 2020 e é criador do Programa de Formação Consultor LinkedIn. A marca pessoal "Dr. LinkedIn" vende a ideia de transformar o LinkedIn em uma máquina de vendas, por meio de autoridade, social selling e prospecção corporativa.
+  </p>
+
+  <h3>O ponto de partida</h3>
+  <p>
+    O site atual (<a href="https://drlinkedin.com.br">drlinkedin.com.br</a>) é uma landing page em WordPress de 2021 — funcional, mas visualmente genérica para alguém que se vende como autoridade premium. Ao lado disso, uma plataforma de conteúdo em Canva (drlinkedin.my.canva.site) concentra os cursos e materiais.
+  </p>
+
+  <h3>O novo posicionamento</h3>
+  <p>
+    As artes recebidas mostram um <strong>upgrade de posicionamento</strong> significativo — saindo do tom "infoprodutor" para uma linguagem <em>executiva/concierge premium</em>: paleta navy + dourado, tipografia serifada, fotografia cinematográfica em escritório de madeira, vocabulário proprietário (Concierge Digital, Cofre de Inteligência, Arquiteto da Autoridade).
+  </p>
+
+  <div class="callout">
+    <span class="label">Decisão de projeto</span>
+    <p><strong>Separar APP e SITE em dois projetos distintos.</strong> São produtos diferentes com públicos, objetivos e arquiteturas de informação próprias. Este documento cobre apenas o APP.</p>
+  </div>
+
+  <h3>Objetivo do app</h3>
+  <p>
+    Um <strong>app-hub</strong> que funciona como porta de entrada para o universo Dr. LinkedIn — apresenta a marca, a metodologia e direciona o usuário para as plataformas externas (plataforma do curso, LinkedIn, Instagram, site, WhatsApp, Amazon). Não é uma área logada complexa, é um organizador premium de canais com identidade forte.
+  </p>
+
+  <div class="cols-2">
+    <div class="mini-card">
+      <span class="label">Público</span>
+      <h4>Alunos e clientes</h4>
+      <p>Pessoas que já conhecem a marca e querem acesso fácil aos canais e conteúdos.</p>
+    </div>
+    <div class="mini-card">
+      <span class="label">Formato</span>
+      <h4>Mobile-first</h4>
+      <p>Tab bar inferior, navegação simples, identidade executiva premium.</p>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span class="brand">Dr. LinkedIn</span>
+    <span>3 · Contexto do projeto</span>
+  </div>
+</section>
+
+<!-- ═══════════ PÁGINA 4 — ENTREGUES ═══════════ -->
+<section class="page">
+  <h2 class="section">
+    <span class="num">02 · Entregáveis</span>
+    O que foi entregue
+  </h2>
+
+  <h3>Protótipo funcional em HTML</h3>
+  <p>Um app mobile navegável, com 5 abas na tab bar inferior. Todas as interações estão vivas: botões abrem links reais, Home alterna entre variantes a cada abertura, transições entre telas funcionam.</p>
+
+  <h3>Identidade visual</h3>
+  <div class="cols-2">
+    <div class="mini-card">
+      <span class="label">Cores</span>
+      <h4>Navy + Dourado</h4>
+      <p>Navy #0F1B2E como base, dourado #D4A53A como destaque. Cartões escuros com bordas douradas sutis.</p>
+    </div>
+    <div class="mini-card">
+      <span class="label">Tipografia</span>
+      <h4>Cormorant + Inter</h4>
+      <p>Cormorant Garamond (serifada) para títulos e dourados; Inter para corpo e micro-copy.</p>
+    </div>
+  </div>
+
+  <h3>As 5 telas</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Aba</th>
+        <th>Função</th>
+        <th>CTA principal</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Home</strong></td>
+        <td>Retrato rotativo (3 variantes) + tagline + abertura para a plataforma</td>
+        <td>"Começar" → plataforma Canva</td>
+      </tr>
+      <tr>
+        <td><strong>Consultoria</strong></td>
+        <td>4 planos de serviço com diferenciais e destaques</td>
+        <td>WhatsApp com mensagem específica por plano</td>
+      </tr>
+      <tr>
+        <td><strong>Livro</strong></td>
+        <td>Capa do livro LinkedIn Business + destaques + citação</td>
+        <td>"Comprar na Amazon" → página Amazon</td>
+      </tr>
+      <tr>
+        <td><strong>Sobre</strong></td>
+        <td>Missão, especialidades, método comprovado, 5 pilares</td>
+        <td>Navegação interna</td>
+      </tr>
+      <tr>
+        <td><strong>Contato</strong></td>
+        <td>5 canais clicáveis + informações profissionais</td>
+        <td>"Acessar plataforma"</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>Home rotativa — 3 variantes</h3>
+  <p>A cada abertura do app, a tela inicial apresenta uma cena diferente — foto, título e subtítulo variam em conjunto. Cria sensação de app vivo e permite explorar diferentes ângulos da marca:</p>
+  <ul class="clean">
+    <li><strong>Poltrona Chesterfield</strong> — "Transforme o seu LinkedIn em uma Máquina de Vendas"</li>
+    <li><strong>Casual corporativo</strong> — "Transforme contatos em contratos"</li>
+    <li><strong>Retrato close</strong> — "Autoridade executiva no LinkedIn"</li>
+  </ul>
+
+  <div class="pull-quote">
+    "O app hoje já é monetizável no modelo mais simples — toda conversão passa por canais externos. Sem lojas, sem taxas."
+  </div>
+
+  <div class="page-footer">
+    <span class="brand">Dr. LinkedIn</span>
+    <span>4 · Entregáveis</span>
+  </div>
+</section>
+
+<!-- ═══════════ PÁGINA 5 — ARQUITETURA ═══════════ -->
+<section class="page">
+  <h2 class="section">
+    <span class="num">03 · Arquitetura</span>
+    Links e fluxos de conversão
+  </h2>
+
+  <h3>Destinos externos ativos</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Botão / elemento</th>
+        <th>Destino</th>
+        <th>Tipo</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>"Começar" (Home)</td>
+        <td>drlinkedin.my.canva.site</td>
+        <td>Plataforma de conteúdo</td>
+      </tr>
+      <tr>
+        <td>"Acessar plataforma" (Contato)</td>
+        <td>drlinkedin.my.canva.site</td>
+        <td>Plataforma de conteúdo</td>
+      </tr>
+      <tr>
+        <td>"Comprar na Amazon" (Livro)</td>
+        <td>amazon.com.br/…/B0GKJG5VF1</td>
+        <td>E-commerce externo</td>
+      </tr>
+      <tr>
+        <td>CTAs dos 4 planos (Consultoria)</td>
+        <td>WhatsApp (71) 99413-3180</td>
+        <td>Conversa direta, mensagens pré-preenchidas</td>
+      </tr>
+      <tr>
+        <td>LinkedIn (Contato)</td>
+        <td>linkedin.com/in/alessandrofv</td>
+        <td>Rede social</td>
+      </tr>
+      <tr>
+        <td>Instagram (Contato)</td>
+        <td>instagram.com/dr_linkedin</td>
+        <td>Rede social</td>
+      </tr>
+      <tr>
+        <td>Website (Contato)</td>
+        <td>drlinkedin.com.br</td>
+        <td>Site institucional</td>
+      </tr>
+      <tr>
+        <td>E-mail (Contato)</td>
+        <td>contato@drlinkedin.com.br</td>
+        <td>Abre app de e-mail do celular</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>Estratégia de conversão por WhatsApp</h3>
+  <p>
+    Cada plano da aba Consultoria abre o WhatsApp com uma mensagem <strong>específica e identificável</strong> — exemplo: <em>"Olá, tenho interesse na Formação Consultor LinkedIn."</em> Isso permite rastrear qual plano trouxe o lead direto do app, sem ferramentas extras.
+  </p>
+
+  <div class="callout">
+    <span class="label">Dica de conversão</span>
+    <p>Os 4 planos mapeados são os mesmos do site antigo: Formação Consultor LinkedIn, LinkedIn para Negócios, Mentoria Individual e Mega Combo. Fácil de atualizar se mudar a oferta.</p>
+  </div>
+
+  <h3>Os 5 pilares simbólicos</h3>
+  <p>
+    A aba Sobre apresenta os 5 pilares da metodologia — <strong>FOCO · AUTORIDADE · VOZ · RADAR · COFRE</strong> — como uma faixa secundária visualmente destacada. Hoje são rótulos da metodologia; podem virar telas próprias se decidir expandir a experiência.
+  </p>
+
+  <div class="page-footer">
+    <span class="brand">Dr. LinkedIn</span>
+    <span>5 · Arquitetura</span>
+  </div>
+</section>
+
+<!-- ═══════════ PÁGINA 6 — MONETIZAÇÃO ═══════════ -->
+<section class="page">
+  <h2 class="section">
+    <span class="num">04 · Monetização</span>
+    Como o app gera receita
+  </h2>
+
+  <p>Existem três caminhos para monetizar um app como este. O projeto atual já implementa o Caminho A.</p>
+
+  <h3>Caminho A — Vitrine que converte externamente <span style="color: var(--gold-500); font-size: 11pt;">(ATUAL)</span></h3>
+  <p>O app <strong>não processa pagamento</strong>, mas conduz o usuário para páginas de checkout externas (WhatsApp, Amazon, Canva, Hotmart, Kiwify, etc.).</p>
+  <div class="cols-2">
+    <div class="mini-card" style="background: #f0f8f0; border-color: #c8e6c8;">
+      <span class="label" style="color: #2d7d2d;">Vantagens</span>
+      <p>Zero burocracia · Zero taxa de loja · Rápido de implementar · Ideal para ticket alto (R$ 500+)</p>
+    </div>
+    <div class="mini-card" style="background: #fef6f0; border-color: #f0d5c0;">
+      <span class="label" style="color: #a8620a;">Limitações</span>
+      <p>Conversão menor que checkout direto · Depende de atendimento humano no WhatsApp</p>
+    </div>
+  </div>
+
+  <h3>Caminho B — Pagamento dentro do app</h3>
+  <p>Integrar Stripe, Mercado Pago ou Pix no próprio app.</p>
+  <div class="cols-2">
+    <div class="mini-card" style="background: #f0f8f0; border-color: #c8e6c8;">
+      <span class="label" style="color: #2d7d2d;">Vantagens</span>
+      <p>Compra fluida · Tudo em um lugar · Menos fricção no funil</p>
+    </div>
+    <div class="mini-card" style="background: #fef6f0; border-color: #f0d5c0;">
+      <span class="label" style="color: #a8620a;">Exigências</span>
+      <p>Conta em gateway · Backend mínimo · Certificado SSL · Política de privacidade detalhada · Para conteúdo digital dentro do app, Apple cobra taxa 15-30%</p>
+    </div>
+  </div>
+
+  <h3>Caminho C — Assinatura com conteúdo exclusivo</h3>
+  <p>App vira plataforma de conteúdo — aulas, podcasts, lives só para assinantes.</p>
+  <div class="cols-2">
+    <div class="mini-card" style="background: #f0f8f0; border-color: #c8e6c8;">
+      <span class="label" style="color: #2d7d2d;">Vantagens</span>
+      <p>Receita recorrente · Base fiel · Ativo de longo prazo</p>
+    </div>
+    <div class="mini-card" style="background: #fef6f0; border-color: #f0d5c0;">
+      <span class="label" style="color: #a8620a;">Exigências</span>
+      <p>Muito conteúdo pronto · Backend robusto · Login · Área do aluno · CDN de vídeo · Projeto de meses</p>
+    </div>
+  </div>
+
+  <div class="callout-dark">
+    <span class="label">Recomendação</span>
+    <h4>Comece com Caminho A, escale para B/C conforme a demanda cresce.</h4>
+    <p>O Caminho A valida o app com público real sem investimento extra. Depois de ver volume de conversão, aí vale investir em checkout direto ou assinatura — com dados para justificar o custo.</p>
+  </div>
+
+  <h3>Evoluções possíveis do Caminho A (sem sair dele)</h3>
+  <ul class="clean">
+    <li><strong>Checkout direto via Hotmart/Kiwify</strong> — mais conversão que WhatsApp para ticket médio</li>
+    <li><strong>Upsell na tela Livro</strong> — "Gostou do livro? Conheça a mentoria"</li>
+    <li><strong>Captura de lead por e-mail</strong> — lista de conteúdo para nutrição</li>
+    <li><strong>Tela de depoimentos</strong> — aproveitar os 4 que já existem no site antigo</li>
+  </ul>
+
+  <div class="page-footer">
+    <span class="brand">Dr. LinkedIn</span>
+    <span>6 · Monetização</span>
+  </div>
+</section>
+
+<!-- ═══════════ PÁGINA 7 — FASE 1 PREPARAÇÃO ═══════════ -->
+<section class="page">
+  <h2 class="section">
+    <span class="num">05 · Publicação</span>
+    Fase 1 — Preparação
+  </h2>
+
+  <p>Antes de qualquer linha de código nativo, três frentes precisam estar resolvidas.</p>
+
+  <h3>5.1 Contas de desenvolvedor</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Loja</th>
+        <th>Custo</th>
+        <th>Aprovação</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Google Play Console</strong></td>
+        <td class="num">US$ 25 — pagamento único, vitalício</td>
+        <td>1 a 3 dias úteis</td>
+      </tr>
+      <tr>
+        <td><strong>Apple Developer Program</strong></td>
+        <td class="num">US$ 99 / ano</td>
+        <td>24-48h; pode exigir verificação de identidade</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="callout">
+    <p><strong>Registre as contas primeiro.</strong> A aprovação leva tempo e independe do app estar pronto. Começar por aqui economiza uma semana no cronograma final.</p>
+  </div>
+
+  <h3>5.2 Ativos visuais necessários</h3>
+  <ul class="clean">
+    <li><strong>Ícone do app</strong> — base 1024×1024, derivável para várias resoluções</li>
+    <li><strong>Ícone adaptável Android</strong> — formato específico com camadas separadas</li>
+    <li><strong>Splash screen</strong> — tela de abertura do app</li>
+    <li><strong>Screenshots da loja</strong> — 5 a 8 imagens de cada tela, em múltiplos tamanhos (celulares e tablets)</li>
+    <li><strong>Feature Graphic</strong> — banner 1024×500 para o Google Play</li>
+  </ul>
+
+  <h3>5.3 Textos de loja</h3>
+  <ul class="clean">
+    <li><strong>Nome do app</strong> — ex: "Dr. LinkedIn"</li>
+    <li><strong>Descrição curta</strong> — até 80 caracteres</li>
+    <li><strong>Descrição completa</strong> — até 4.000 caracteres</li>
+    <li><strong>Palavras-chave</strong> — até 100 caracteres (só App Store)</li>
+    <li><strong>Categoria</strong> — Negócios / Produtividade</li>
+    <li><strong>Classificação indicativa</strong> — Livre</li>
+  </ul>
+
+  <h3>5.4 Jurídico (obrigatório)</h3>
+  <ul class="clean">
+    <li><strong>Política de Privacidade</strong> publicada em URL — ambas as lojas exigem</li>
+    <li><strong>Termos de Uso</strong> — recomendado, não obrigatório</li>
+    <li><strong>Questionário de privacidade Apple</strong> — preencher manualmente no App Store Connect</li>
+  </ul>
+  <p class="tiny muted">
+    Como o app só abre links externos e não coleta dados do usuário, a política de privacidade pode ser relativamente simples.
+  </p>
+
+  <div class="page-footer">
+    <span class="brand">Dr. LinkedIn</span>
+    <span>7 · Fase 1 — Preparação</span>
+  </div>
+</section>
+
+<!-- ═══════════ PÁGINA 8 — FASE 2 TÉCNICA ═══════════ -->
+<section class="page">
+  <h2 class="section">
+    <span class="num">06 · Publicação</span>
+    Fase 2 — Empacotamento técnico
+  </h2>
+
+  <h3>Opção recomendada: Capacitor</h3>
+  <p>
+    <strong>Capacitor</strong> (da Ionic) é a ferramenta mais indicada para o caso. Ela pega nosso HTML/CSS/JS atual e embrulha em um app nativo Android (.aab) e iOS (.ipa) — sem reescrever nada.
+  </p>
+
+  <h3>O que um desenvolvedor mobile faz</h3>
+  <ol>
+    <li>Cria projeto Capacitor e aponta para nossos arquivos HTML existentes</li>
+    <li>Configura nome, bundle ID (ex: <code>com.drlinkedin.app</code>), versão</li>
+    <li>Integra ícones em todas as resoluções e splash screens</li>
+    <li>Configura permissões — no nosso caso, só acesso à internet</li>
+    <li>Gera keystore Android e certificados Apple (assinatura digital)</li>
+    <li>Testa no emulador e em dispositivos reais (Android e iOS)</li>
+    <li>Gera as builds finais assinadas para upload nas lojas</li>
+  </ol>
+  <p class="muted tiny">Tempo estimado de trabalho: 2 a 5 dias de um dev freelance experiente.</p>
+
+  <h3>Ferramentas que o dev precisa ter</h3>
+  <ul class="clean">
+    <li><strong>Mac</strong> — obrigatório para gerar build iOS. Sem Mac, não tem App Store.</li>
+    <li><strong>Xcode</strong> — gratuito, só roda em Mac</li>
+    <li><strong>Android Studio</strong> — gratuito, roda em qualquer sistema</li>
+    <li><strong>Conta Apple Developer</strong> e <strong>Google Play Console</strong> (as do cliente)</li>
+  </ul>
+
+  <h3>Alternativa mais simples: TWA (só Android)</h3>
+  <p>
+    O <strong>Trusted Web Activity</strong> do Google cria um app Android que é basicamente um "atalho nativo" que abre nosso site. Muito mais rápido de empacotar, mas só cobre Android. A Apple não tem equivalente.
+  </p>
+  <div class="callout">
+    <span class="label">Sugestão</span>
+    <p>Se quiser começar só pela Google Play enquanto prepara iOS com mais calma, TWA é uma opção viável. Mas para um lançamento completo (Android + iOS), Capacitor é o caminho certo.</p>
+  </div>
+
+  <h3>Funcionalidades nativas recomendadas</h3>
+  <p>Para evitar rejeição da Apple por "minimum functionality", vale adicionar pelo menos uma dessas:</p>
+  <ul class="clean">
+    <li><strong>Notificações push</strong> — quando sai novo conteúdo, novo curso, nova live</li>
+    <li><strong>Compartilhamento nativo</strong> — botão "compartilhar este plano" com o sistema do celular</li>
+    <li><strong>Favoritos offline</strong> — última versão do conteúdo acessível sem internet</li>
+    <li><strong>Splash screen com animação</strong> — marca da Dr. LinkedIn aparecendo ao abrir</li>
+  </ul>
+
+  <div class="page-footer">
+    <span class="brand">Dr. LinkedIn</span>
+    <span>8 · Fase 2 — Empacotamento técnico</span>
+  </div>
+</section>
+
+<!-- ═══════════ PÁGINA 9 — FASE 3 SUBMISSÃO ═══════════ -->
+<section class="page">
+  <h2 class="section">
+    <span class="num">07 · Publicação</span>
+    Fase 3 — Submissão e revisão
+  </h2>
+
+  <h3>Google Play — mais permissivo</h3>
+  <ol>
+    <li>Upload do arquivo <code>.aab</code> no Play Console</li>
+    <li>Preencher ficha da loja (screenshots, descrição, ícone, feature graphic)</li>
+    <li>Responder questionário de classificação de conteúdo</li>
+    <li><strong>Teste interno</strong> — circula para até 100 pessoas com e-mails cadastrados</li>
+    <li><strong>Teste fechado</strong> (opcional) — grupo maior</li>
+    <li><strong>Produção</strong> → revisão de <strong>3 a 7 dias</strong> → publicado</li>
+    <li>Atualizações: deploy direto, disponível em horas</li>
+  </ol>
+
+  <h3>Apple App Store — mais rígida</h3>
+  <ol>
+    <li>Upload do <code>.ipa</code> via Xcode ou Transporter</li>
+    <li><strong>TestFlight</strong> — teste beta interno (obrigatório)</li>
+    <li>Preencher ficha da App Store em múltiplos tamanhos e idiomas</li>
+    <li>Preencher questionário de privacidade detalhado (quais dados são coletados, para quê, com quem são compartilhados)</li>
+    <li><strong>App Review</strong> → 1 a 3 dias → publicado ou rejeitado</li>
+  </ol>
+
+  <div class="callout-dark">
+    <span class="label">Atenção — motivo comum de rejeição</span>
+    <h4>"Minimum Functionality" (Guideline 4.2)</h4>
+    <p>A Apple pode argumentar que o app é fino demais, que é "apenas um atalho para o site". A mitigação é adicionar pelo menos 1-2 funcionalidades nativas reais — notificações push, compartilhamento nativo, modo offline — durante a fase de empacotamento.</p>
+  </div>
+
+  <h3>Depois de publicado</h3>
+  <ul class="clean">
+    <li><strong>Monitorar avaliações</strong> — responder e iterar</li>
+    <li><strong>Analytics</strong> — quantos abriram, qual tela mais usada, qual CTA mais clicado</li>
+    <li><strong>Atualizações regulares</strong> — Android e iOS mudam regras a cada 6-12 meses; precisa republicar builds atualizados para continuar nas lojas</li>
+  </ul>
+
+  <div class="page-footer">
+    <span class="brand">Dr. LinkedIn</span>
+    <span>9 · Fase 3 — Submissão</span>
+  </div>
+</section>
+
+<!-- ═══════════ PÁGINA 10 — CUSTOS, RISCOS, CRONOGRAMA ═══════════ -->
+<section class="page">
+  <h2 class="section">
+    <span class="num">08 · Orçamento</span>
+    Custos, riscos e cronograma
+  </h2>
+
+  <h3>Custos estimados</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Item</th>
+        <th>Valor</th>
+        <th>Frequência</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Google Play Console</td>
+        <td class="num">US$ 25 (~R$ 140)</td>
+        <td>Único, vitalício</td>
+      </tr>
+      <tr>
+        <td>Apple Developer Program</td>
+        <td class="num">US$ 99 (~R$ 560)</td>
+        <td>Anual</td>
+      </tr>
+      <tr>
+        <td>Dev mobile — empacotamento com Capacitor</td>
+        <td class="num">R$ 2.500 – 6.000</td>
+        <td>Único (freelance)</td>
+      </tr>
+      <tr>
+        <td>Manutenção — atualizações e ajustes</td>
+        <td class="num">R$ 500 – 1.500</td>
+        <td>Anual</td>
+      </tr>
+      <tr style="background: var(--paper-2);">
+        <td><strong>Total primeiro ano</strong></td>
+        <td class="num"><strong>R$ 4.000 – 8.000</strong></td>
+        <td>—</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>Cronograma pragmático</h3>
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="timeline-week">Semana 1</div>
+      <div class="timeline-title">Registro de contas e ativos</div>
+      <p class="timeline-desc">Registrar Google Play e Apple Developer. Preparar ícones, splash, screenshots e política de privacidade.</p>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-week">Semana 2</div>
+      <div class="timeline-title">Validação com PWA</div>
+      <p class="timeline-desc">Publicar protótipo como Progressive Web App para teste com público real. Coletar feedback antes de investir em loja.</p>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-week">Semana 3 – 4</div>
+      <div class="timeline-title">Empacotamento técnico</div>
+      <p class="timeline-desc">Contratar dev mobile. Setup Capacitor, builds Android e iOS, testes em dispositivos reais.</p>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-week">Semana 5</div>
+      <div class="timeline-title">Upload Google Play</div>
+      <p class="timeline-desc">Envio para teste interno e depois produção.</p>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-week">Semana 6</div>
+      <div class="timeline-title">Upload App Store</div>
+      <p class="timeline-desc">Envio para TestFlight e submissão para App Review.</p>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-week">Semana 7 – 9</div>
+      <div class="timeline-title">Revisão, ajustes e publicação</div>
+      <p class="timeline-desc">Responder eventuais rejeições, publicar nas duas lojas.</p>
+    </div>
+  </div>
+
+  <h3>Riscos principais</h3>
+  <div class="risk">
+    <div class="risk-num">01</div>
+    <div>
+      <h4>Rejeição da Apple por minimum functionality</h4>
+      <p>Mitigação: incluir ao menos uma funcionalidade nativa (push ou compartilhamento).</p>
+    </div>
+  </div>
+  <div class="risk">
+    <div class="risk-num">02</div>
+    <div>
+      <h4>Pagamentos in-app no futuro</h4>
+      <p>Se vender cursos/planos dentro do app, Apple cobra 15-30%. Hoje estamos protegidos porque só linkamos para fora.</p>
+    </div>
+  </div>
+  <div class="risk">
+    <div class="risk-num">03</div>
+    <div>
+      <h4>Manutenção contínua</h4>
+      <p>A cada 6-12 meses, novas regras das lojas exigem republicação de builds. Orçamento anual.</p>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span class="brand">Dr. LinkedIn</span>
+    <span>10 · Custos e cronograma</span>
+  </div>
+</section>
+
+<!-- ═══════════ PÁGINA 11 — PRÓXIMOS PASSOS ═══════════ -->
+<section class="page">
+  <h2 class="section">
+    <span class="num">09 · A partir daqui</span>
+    Próximos passos recomendados
+  </h2>
+
+  <p>
+    A decisão mais pragmática não é "ir direto para as lojas". É validar antes com custo zero, depois investir com dados de uso real em mãos.
+  </p>
+
+  <div class="callout-dark">
+    <span class="label">Sequência recomendada</span>
+    <h4>Validar com PWA → Publicar nas lojas → Expandir monetização</h4>
+    <p>Cada etapa desbloqueia a próxima com base em evidência, não em aposta.</p>
+  </div>
+
+  <h3>Passo 1 — PWA instalável <span style="color: var(--gold-500);">(custo zero)</span></h3>
+  <p>
+    Transformar o protótipo atual em <strong>Progressive Web App</strong> — o usuário abre o link no celular e instala direto na tela inicial, com ícone próprio, abrindo em tela cheia como app nativo. Sem lojas, sem revisão.
+  </p>
+  <ul class="clean">
+    <li>Compartilhamento imediato — basta um link</li>
+    <li>Primeiros usuários e primeiros dados de comportamento</li>
+    <li>Valida posicionamento, copy, fluxo antes de investir em loja</li>
+    <li>Limitação: não aparece na Google Play / App Store</li>
+  </ul>
+
+  <h3>Passo 2 — Empacotamento nativo</h3>
+  <p>
+    Com dados do PWA em mãos, contratar dev mobile para empacotar com Capacitor. Aqui o protótipo atual vira app nativo real, publicável nas lojas.
+  </p>
+
+  <h3>Passo 3 — Expansão pós-lançamento</h3>
+  <p>A partir dos primeiros meses de uso, priorizar evoluções por ordem de impacto:</p>
+  <ul class="clean">
+    <li><strong>Notificações push</strong> — manter usuário ativo quando tem novo conteúdo</li>
+    <li><strong>Telas dos 5 pilares</strong> — FOCO, AUTORIDADE, VOZ, RADAR, COFRE como seções reais</li>
+    <li><strong>Depoimentos</strong> — tela dedicada com prova social</li>
+    <li><strong>Checkout direto</strong> — substituir WhatsApp por Hotmart/Kiwify para ticket médio</li>
+    <li><strong>Área logada</strong> — se fizer sentido, acesso a conteúdo exclusivo para alunos</li>
+  </ul>
+
+  <div class="pull-quote">
+    "Validar antes. Investir depois. Escalar com dados."
+  </div>
+
+  <h3>Decisões que dependem de você</h3>
+  <ul class="clean">
+    <li>Autorizar geração do ícone do app (posso criar a partir de "Dr.L" em navy + dourado, ou preferir outro logo)</li>
+    <li>Aprovar política de privacidade (posso gerar template baseado no perfil do app)</li>
+    <li>Escolher dev mobile para o empacotamento (posso sugerir critérios de contratação)</li>
+    <li>Decidir se começa por Google Play (TWA, mais rápido) ou lança Android + iOS juntos (Capacitor)</li>
+  </ul>
+
+  <div class="callout">
+    <span class="label">Por onde começar</span>
+    <p><strong>O próximo passo concreto é transformar o protótipo em PWA.</strong> Custo zero, entrega em horas, você já tem um link para compartilhar com público real. Com as respostas que vierem, a decisão de investir nas lojas fica muito mais fundamentada.</p>
+  </div>
+
+  <div class="page-footer">
+    <span class="brand">Dr. LinkedIn</span>
+    <span>11 · Próximos passos</span>
+  </div>
+</section>
+
+<!-- ═══════════ PÁGINA 12 — FIM ═══════════ -->
+<section class="page cover" style="display: flex; align-items: center; justify-content: center; text-align: center;">
+  <div>
+    <span class="label">Documento Executivo · Dr. LinkedIn</span>
+    <h1 class="cover-title" style="font-size: 48pt; margin-top: 18px;">
+      Obrigado.
+    </h1>
+    <p style="font-size: 14pt; max-width: 480px; margin: 20px auto 0; line-height: 1.5; font-family: 'Cormorant Garamond', serif; font-style: italic;">
+      Este documento acompanha o protótipo em HTML e pode ser atualizado conforme o projeto evolui.
+    </p>
+    <div style="margin-top: 60px; font-family: 'Inter', sans-serif; font-size: 10pt; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(255,255,255,0.5);">
+      Abril de 2026
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

@@ -4,6 +4,7 @@
   "description": "App-hub da marca **Dr. LinkedIn** (Alessandro Feijó). Protótipo HTML/React com 5 telas e suporte PWA (instalável, funciona offline).",
   "main": "service-worker.js",
   "scripts": {
+    "start": "npx.cmd serve . -l 3000 --no-clipboard",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

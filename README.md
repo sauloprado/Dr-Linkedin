@@ -28,8 +28,8 @@ assets/
 ## Links ativos
 
 - **Plataforma** (Canva): `drlinkedin.my.canva.site`
-- **Amazon livro**: `B0GKJG5VF1`
-- **WhatsApp**: `(71) 99413-3180` (mensagens pré-preenchidas por plano)
+- **Amazon livro**: `B0GTYRKXGJ` (versão física + e-book)
+- **WhatsApp**: `(31) 97186-3031` (mensagens pré-preenchidas por plano)
 - **LinkedIn/Instagram/Website/E-mail**: todos os canais oficiais
 
 ## Rodar localmente

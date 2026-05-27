@@ -18,7 +18,7 @@ const HERO_VARIANTS = [
     id: 'portrait',
     image: 'assets/alessandro-portrait.png',
     objectPosition: 'center 25%',
-    heading: 'Autoridade executiva\nno LinkedIn',
+    heading: 'Autoridade Executiva\nno LinkedIn',
     body: 'Mais de 20 anos em vendas, agora ao seu lado para elevar sua presença digital.',
   },
 ];
@@ -104,7 +104,7 @@ function HomeScreen({ onStart }) {
         </button>
 
         <div className="label-micro" style={{ marginTop: 26 }}>
-          Especialista em LinkedIn desde 2020
+          Especialista em LinkedIn desde 2009
         </div>
       </div>
     </div>

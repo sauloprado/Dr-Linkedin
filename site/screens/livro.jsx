@@ -1,5 +1,5 @@
 // Livro — LinkedIn Business
-const BOOK_URL = 'https://www.amazon.com.br/LinkedIn-Business-Estrat%C3%A9gia-Transformar-Autoridade-ebook/dp/B0GKJG5VF1/';
+const BOOK_URL = 'https://www.amazon.com.br/LinkedIn-Business-Estrat%C3%A9gia-Transformar-Autoridade/dp/B0GTYRKXGJ/ref=tmm_pap_swatch_0';
 
 function LivroScreen() {
   const { Arrow } = window.Icon;
@@ -27,6 +27,9 @@ function LivroScreen() {
           lineHeight: 1.5,
         }}>
           A estratégia completa para transformar autoridade digital em negócios reais.
+        </p>
+        <p style={{ fontSize: 13, color: 'var(--gold)', margin: '8px 0 0', fontStyle: 'italic' }}>
+          Disponível em E-Book e Físico
         </p>
       </div>
 

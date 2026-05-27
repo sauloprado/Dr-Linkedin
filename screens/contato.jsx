@@ -24,8 +24,8 @@ function ContatoScreen({ onPlatform }) {
     {
       Icon: WhatsApp,
       title: 'WhatsApp',
-      subtitle: '(71) 99413-3180',
-      href: 'https://api.whatsapp.com/send?phone=5571994133180&text=Ol%C3%A1%2C%20venho%20do%20App%20Dr.%20LinkedIn!',
+      subtitle: '(31) 97186-3031',
+      href: 'https://api.whatsapp.com/send?phone=5531971863031&text=Ol%C3%A1%2C%20venho%20do%20App%20Dr.%20LinkedIn!',
     },
     {
       Icon: Mail,
@@ -75,7 +75,7 @@ function ContatoScreen({ onPlatform }) {
           margin: '0 0 24px',
           lineHeight: 1.55,
         }}>
-          Estamos prontos para ajudar você a transformar seu LinkedIn em oportunidades de negócio com autoridade executiva.
+          Estamos prontos para ajudar você a transformar seu LinkedIn em oportunidades de negócio com Autoridade Executiva.
         </p>
       </div>
 
@@ -126,11 +126,11 @@ function ContatoScreen({ onPlatform }) {
         <div className="card" style={{ padding: '4px 20px' }}>
           <div className="info-row">
             <div className="info-label">Localização</div>
-            <div className="info-value">Salvador, Bahia — Brasil</div>
+            <div className="info-value">Belo Horizonte, Minas Gerais — Brasil</div>
           </div>
           <div className="info-row">
             <div className="info-label">Especialidade</div>
-            <div className="info-value">Consultoria em LinkedIn e social selling</div>
+            <div className="info-value">Consultoria em LinkedIn e Social Selling</div>
           </div>
           <div className="info-row">
             <div className="info-label">Experiência</div>

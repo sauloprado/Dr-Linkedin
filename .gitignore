@@ -23,3 +23,11 @@ npm-debug.log*
 
 # Script auxiliar de ícones (não é parte do app)
 generate-icons.mjs
+
+# Builds de release (distribuir via GitHub Releases, não pelo repo)
+*.aab
+*.apk
+*.7z
+
+# Configurações locais do Claude Code
+.claude/settings.local.json

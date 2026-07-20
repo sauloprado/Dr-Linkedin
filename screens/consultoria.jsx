@@ -1,5 +1,5 @@
 // Consultoria — planos com CTA WhatsApp
-const WA_BASE = 'https://api.whatsapp.com/send?phone=5571994133180&text=';
+const WA_BASE = 'https://api.whatsapp.com/send?phone=5531971863031&text=';
 
 const PLANS = [
   {

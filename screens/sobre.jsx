@@ -102,7 +102,7 @@ function SobreScreen() {
           marginTop: 36,
           paddingBottom: 24,
         }}>
-          © 2023 Dr. LinkedIn. Todos os direitos reservados.
+          © 2026 Dr. LinkedIn. Todos os direitos reservados.
         </div>
       </div>
 

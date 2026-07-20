@@ -1,5 +1,12 @@
 apply plugin: 'com.android.application'
 
+// Carrega credenciais de assinatura de arquivo NÃO versionado (android/keystore.properties)
+def keystorePropertiesFile = rootProject.file("keystore.properties")
+def keystoreProperties = new Properties()
+if (keystorePropertiesFile.exists()) {
+    keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+}
+
 android {
     namespace = "com.drlinkedin.app"
     compileSdk = rootProject.ext.compileSdkVersion
@@ -18,10 +25,10 @@ android {
     }
     signingConfigs {
         release {
-            storeFile file("drlinkedin-release.keystore")
-            storePassword "***SENHA-ROTACIONADA-REMOVIDA***"
-            keyAlias "drlinkedin"
-            keyPassword "***SENHA-ROTACIONADA-REMOVIDA***"
+            storeFile file(keystoreProperties.getProperty("storeFile") ?: "drlinkedin-release.keystore")
+            storePassword keystoreProperties.getProperty("storePassword") ?: System.getenv("KEYSTORE_PASSWORD")
+            keyAlias keystoreProperties.getProperty("keyAlias") ?: "drlinkedin"
+            keyPassword keystoreProperties.getProperty("keyPassword") ?: System.getenv("KEY_PASSWORD")
         }
     }
     buildTypes {

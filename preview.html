@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Prévia — Dr. LinkedIn (SSI no menu)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="root"></div>
+
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" crossorigin="anonymous"></script>
+
+  <script type="text/babel">
+    const { useState } = React;
+
+    const Icon = {
+      Home: ({ size = 22, filled = false }) => (
+        <svg width={size} height={size} viewBox="0 0 24 24" fill="none">
+          <path d="M3 10.5L12 3l9 7.5V20a1 1 0 01-1 1h-5v-7h-6v7H4a1 1 0 01-1-1v-9.5z"
+            stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round"
+            fill={filled ? 'currentColor' : 'none'} fillOpacity={filled ? 0.15 : 0}/>
+        </svg>
+      ),
+      Info: ({ size = 22 }) => (
+        <svg width={size} height={size} viewBox="0 0 24 24" fill="none">
+          <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="1.6"/>
+          <circle cx="12" cy="8" r="1" fill="currentColor"/>
+          <path d="M12 11v6" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round"/>
+        </svg>
+      ),
+      Mail: ({ size = 22 }) => (
+        <svg width={size} height={size} viewBox="0 0 24 24" fill="none">
+          <rect x="3" y="5.5" width="18" height="13" rx="2.5" stroke="currentColor" strokeWidth="1.6"/>
+          <path d="M4 7l8 6 8-6" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
+        </svg>
+      ),
+      Book: ({ size = 22 }) => (
+        <svg width={size} height={size} viewBox="0 0 24 24" fill="none">
+          <path d="M4 4.5A1.5 1.5 0 015.5 3H19a1 1 0 011 1v15a1 1 0 01-1 1H6a2 2 0 01-2-2V4.5z"
+            stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round"/>
+          <path d="M4 17.5A1.5 1.5 0 015.5 16H20" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round"/>
+          <path d="M8 7h8M8 10h6" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round"/>
+        </svg>
+      ),
+      Consultoria: ({ size = 22 }) => (
+        <svg width={size} height={size} viewBox="0 0 24 24" fill="none">
+          <path d="M4 12l4-2 4 2 4-2 4 2v6a2 2 0 01-2 2H6a2 2 0 01-2-2v-6z"
+            stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round"/>
+          <path d="M8 10V6a4 4 0 018 0v4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round"/>
+          <circle cx="12" cy="15" r="1.2" fill="currentColor"/>
+        </svg>
+      ),
+      LinkedIn: ({ size = 22 }) => (
+        <svg width={size} height={size} viewBox="0 0 24 24" fill="none">
+          <rect x="3" y="3" width="18" height="18" rx="3" stroke="currentColor" strokeWidth="1.6"/>
+          <circle cx="7.5" cy="8.5" r="1.3" fill="currentColor"/>
+          <path d="M6.5 11v7M10.5 18v-4.5a2 2 0 014 0V18M10.5 11v7" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round"/>
+        </svg>
+      ),
+    };
+
+    function HomeScreen() {
+      const variant = {
+        image: 'assets/alessandro-hero.png',
+        objectPosition: 'center 18%',
+        heading: 'Transforme o seu\nLinkedIn em uma\nMáquina de Vendas',
+        body: 'Aprenda a fazer negócios pelo LinkedIn com mais autoridade na sua área',
+      };
+      return (
+        <div className="screen-scroll screen-enter">
+          <div style={{ position: 'relative', width: '100%', height: 440, overflow: 'hidden' }}>
+            <img src={variant.image} alt="Alessandro Feijó"
+              style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: variant.objectPosition }}/>
+            <div style={{ position: 'absolute', inset: 0,
+              background: 'linear-gradient(180deg, rgba(15,27,46,0) 55%, rgba(15,27,46,0.55) 80%, rgba(15,27,46,1) 100%)' }} />
+          </div>
+          <div style={{ padding: '4px 32px 32px', textAlign: 'center', position: 'relative', zIndex: 2, marginTop: -40 }}>
+            <h1 className="serif-display" style={{ fontSize: 40, margin: '0 0 22px', color: 'var(--text-primary)', lineHeight: 1, letterSpacing: '-0.015em' }}>Dr. LinkedIn</h1>
+            <h2 className="serif-heading" style={{ fontSize: 26, lineHeight: 1.15, color: 'var(--gold-400)', margin: '0 0 18px', fontWeight: 600, whiteSpace: 'pre-line' }}>{variant.heading}</h2>
+            <p style={{ fontSize: 14.5, lineHeight: 1.55, color: 'var(--text-secondary)', margin: '0 0 32px', maxWidth: 280, marginLeft: 'auto', marginRight: 'auto' }}>{variant.body}</p>
+            <div className="label-micro" style={{ marginTop: 12 }}>Especialista em LinkedIn desde 2009</div>
+          </div>
+        </div>
+      );
+    }
+
+    function Placeholder({ name }) {
+      return (
+        <div className="screen-scroll" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+          <p style={{ color: 'var(--text-secondary)', fontFamily: 'Cormorant Garamond, serif', fontSize: 26 }}>Tela: {name}</p>
+        </div>
+      );
+    }
+
+    function TabBar({ active, onChange, onSSI }) {
+      const items = [
+        { id: 'home', label: 'Home', Icon: Icon.Home },
+        { id: 'consultoria', label: 'Consultoria', Icon: Icon.Consultoria },
+        { id: '__ssi', label: 'SSI', Icon: Icon.LinkedIn, ssi: true },
+        { id: 'livro', label: 'Livro', Icon: Icon.Book },
+        { id: 'sobre', label: 'Sobre', Icon: Icon.Info },
+        { id: 'contato', label: 'Contato', Icon: Icon.Mail },
+      ];
+      return (
+        <div className="tabbar">
+          {items.map(t => {
+            if (t.ssi) {
+              return (
+                <button key={t.id} className="tabbar-item tabbar-ssi-soft" onClick={onSSI} aria-label="Acessar a plataforma SSI">
+                  <t.Icon size={20} />
+                  <span className="tabbar-item-label" style={{ fontSize: 9 }}>{t.label}</span>
+                </button>
+              );
+            }
+            const isActive = active === t.id;
+            return (
+              <button key={t.id} className={`tabbar-item ${isActive ? 'active' : ''}`} onClick={() => onChange(t.id)}>
+                <t.Icon size={20} filled={isActive} />
+                <span className="tabbar-item-label" style={{ fontSize: 9 }}>{t.label}</span>
+              </button>
+            );
+          })}
+        </div>
+      );
+    }
+
+    function StatusBar() {
+      return (
+        <div className="device-statusbar">
+          <span>9:41</span>
+          <span style={{ display: 'flex', gap: 6, alignItems: 'center' }}>
+            <svg width="18" height="11" viewBox="0 0 18 11"><rect x="0" y="7" width="3" height="4" rx="0.6" fill="currentColor"/><rect x="4.5" y="5" width="3" height="6" rx="0.6" fill="currentColor"/><rect x="9" y="2.5" width="3" height="8.5" rx="0.6" fill="currentColor"/><rect x="13.5" y="0" width="3" height="11" rx="0.6" fill="currentColor"/></svg>
+            <svg width="25" height="12" viewBox="0 0 25 12"><rect x="0.5" y="0.5" width="21" height="11" rx="3" stroke="currentColor" strokeOpacity="0.4"/><rect x="2" y="2" width="18" height="8" rx="1.5" fill="currentColor"/></svg>
+          </span>
+        </div>
+      );
+    }
+
+    function App() {
+      const [tab, setTab] = useState('home');
+      const openPlatform = () => alert('SSI → abriria a plataforma do Alessandro (mesma URL do antigo "Começar").');
+      return (
+        <div className="device">
+          <div className="device-notch" />
+          <StatusBar />
+          <div className="screen" key={tab}>
+            {tab === 'home' && <HomeScreen />}
+            {tab === 'consultoria' && <Placeholder name="Consultoria" />}
+            {tab === 'livro' && <Placeholder name="Livro" />}
+            {tab === 'sobre' && <Placeholder name="Sobre" />}
+            {tab === 'contato' && <Placeholder name="Contato" />}
+            <TabBar active={tab} onChange={setTab} onSSI={openPlatform} />
+          </div>
+          <div className="device-home-indicator" />
+        </div>
+      );
+    }
+
+    ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+  </script>
+</body>
+</html>

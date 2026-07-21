@@ -46,13 +46,13 @@ function App() {
       <StatusBar />
 
       <div className="screen" key={tab}>
-        {tab === 'home' && <window.HomeScreen onStart={openPlatform} />}
+        {tab === 'home' && <window.HomeScreen />}
         {tab === 'consultoria' && <window.ConsultoriaScreen />}
         {tab === 'livro' && <window.LivroScreen />}
         {tab === 'sobre' && <window.SobreScreen />}
         {tab === 'contato' && <window.ContatoScreen onPlatform={openPlatform} />}
 
-        <window.TabBar active={tab} onChange={setTab} />
+        <window.TabBar active={tab} onChange={setTab} onSSI={openPlatform} />
       </div>
 
       <div className="device-home-indicator" />

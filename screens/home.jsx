@@ -23,7 +23,7 @@ const HERO_VARIANTS = [
   },
 ];
 
-function HomeScreen({ onStart }) {
+function HomeScreen() {
   // escolhe uma variante por abertura (session-based)
   const [variant] = React.useState(() => {
     const key = 'drlinkedin.hero.last';
@@ -99,11 +99,7 @@ function HomeScreen({ onStart }) {
           {variant.body}
         </p>
 
-        <button className="btn-gold" onClick={onStart}>
-          Começar
-        </button>
-
-        <div className="label-micro" style={{ marginTop: 26 }}>
+        <div className="label-micro" style={{ marginTop: 12 }}>
           Especialista em LinkedIn desde 2009
         </div>
       </div>

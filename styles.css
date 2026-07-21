@@ -179,6 +179,14 @@ body {
   font-weight: 600;
 }
 
+/* Item SSI — mesmo formato dos demais itens do menu, apenas com a cor dourada em destaque */
+.tabbar-ssi-soft {
+  color: var(--gold-400);
+}
+.tabbar-ssi-soft .tabbar-item-label {
+  font-weight: 600;
+}
+
 /* Buttons */
 .btn-gold {
   background: linear-gradient(180deg, var(--gold-300) 0%, var(--gold-500) 100%);

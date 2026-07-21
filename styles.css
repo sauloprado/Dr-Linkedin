@@ -377,8 +377,31 @@ body {
   .device-home-indicator {
     display: none;
   }
-  /* Garante que a barra de menus não fique sob a barra de gestos do sistema. */
+  /* Menu FIXO na base — nunca sai da tela; só o conteúdo interno rola. */
   .tabbar {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
     padding-bottom: calc(16px + env(safe-area-inset-bottom));
+  }
+  /* Reserva espaço para o conteúdo não ficar escondido atrás do menu fixo. */
+  .screen-scroll {
+    padding-bottom: 104px;
+    /* Barra de rolagem fina, dourada e semitransparente:
+       dica visual de que há mais conteúdo, na cor de ação do app. */
+    scrollbar-width: thin;
+    scrollbar-color: rgba(227, 185, 78, 0.6) transparent;
+  }
+  .screen-scroll::-webkit-scrollbar {
+    display: block;
+    width: 5px;
+  }
+  .screen-scroll::-webkit-scrollbar-thumb {
+    background: rgba(227, 185, 78, 0.6);
+    border-radius: 3px;
+  }
+  .screen-scroll::-webkit-scrollbar-track {
+    background: transparent;
   }
 }

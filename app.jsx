@@ -27,7 +27,7 @@ function StatusBar() {
   );
 }
 
-const PLATFORM_URL = 'https://drlinkedin.my.canva.site/';
+const PLATFORM_URL = 'https://www.linkedin.com/sales/ssi';
 
 function App() {
   const [tab, setTab] = useState(() => {

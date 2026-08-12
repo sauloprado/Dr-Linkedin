@@ -5,24 +5,31 @@ App-hub da marca **Dr. LinkedIn** (Alessandro Feijó). Protótipo HTML/React com
 ## Estrutura
 
 ```
-App Dr. LinkedIn.html      # Entrypoint
-manifest.webmanifest       # PWA manifest
-service-worker.js          # Cache offline
-styles.css                 # Design system (navy + dourado)
-app.jsx                    # Shell: device frame + navegação
-components/
-  icons.jsx                # Ícones SVG
-  tabbar.jsx               # Tab bar inferior
-screens/
-  home.jsx                 # Hero rotativo (3 variantes)
-  consultoria.jsx          # 4 planos → WhatsApp
-  livro.jsx                # Livro → Amazon
-  sobre.jsx                # Missão, 5 pilares
-  contato.jsx              # Canais e info
-assets/
-  alessandro-*.png         # 3 fotos do hero
-  book-cover.png           # Capa do livro
-  icon-*.png               # Ícones PWA
+app/
+  App Dr. LinkedIn.html    # Entrypoint
+  manifest.webmanifest     # PWA manifest
+  service-worker.js        # Cache offline
+  styles.css               # Design system (navy + dourado)
+  app.jsx                  # Shell: device frame + navegação
+  components/
+    icons.jsx              # Ícones SVG
+    tabbar.jsx              # Tab bar inferior
+  screens/
+    home.jsx                # Hero rotativo (3 variantes)
+    consultoria.jsx         # 4 planos → WhatsApp
+    livro.jsx               # Livro → Amazon
+    sobre.jsx               # Missão, 5 pilares
+    contato.jsx             # Canais e info
+  assets/
+    alessandro-*.png        # 3 fotos do hero
+    book-cover.png          # Capa do livro
+    icon-*.png              # Ícones PWA
+site/                     # Cópia usada pelo Capacitor (Android/iOS)
+android/ · ios/           # Projetos nativos
+docs/                     # Documentação e guias de publicação
+scripts/                  # Scripts geradores (ícones, capa, screenshots)
+builds/                   # Pacotes .aab/.7z gerados localmente
+brand/                    # Logos e material de marca
 ```
 
 ## Links ativos
@@ -38,13 +45,13 @@ Precisa servir via HTTP (service worker não funciona em `file://`):
 
 ```bash
 # Python
-python3 -m http.server 8080
+cd app && python3 -m http.server 8080
 
 # Node
-npx serve .
+npx serve app
 ```
 
-Acesse `http://localhost:8080/App%20Dr.%20LinkedIn.html`.
+Acesse `http://localhost:8080/App%20Dr.%20LinkedIn.html`. Guia completo em [`docs/COMO-SUBIR.md`](docs/COMO-SUBIR.md).
 
 ## Próxima fase — empacotamento nativo (Capacitor)
 

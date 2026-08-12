@@ -4,7 +4,7 @@ import { readFileSync } from 'fs';
 const W = 1280, H = 640;
 
 // Carrega o ícone do app
-const iconBuffer = readFileSync('assets/icon-512.png');
+const iconBuffer = readFileSync('app/assets/icon-512.png');
 const iconResized = await sharp(iconBuffer).resize(180, 180).toBuffer();
 
 const svg = `
@@ -98,6 +98,6 @@ const svgFinal = svg.replace('ICON_BASE64', iconBase64);
 await sharp(Buffer.from(svgFinal))
   .resize(W, H)
   .png()
-  .toFile('github-cover.png');
+  .toFile('brand/github-cover.png');
 
-console.log('Capa gerada: github-cover.png');
+console.log('Capa gerada: brand/github-cover.png');

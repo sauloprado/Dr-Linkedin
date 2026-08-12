@@ -54,7 +54,7 @@ O Play Console vai pedir uma série de informações antes de permitir o envio:
 - Descrição curta (80 caracteres)
 - Descrição completa (4.000 caracteres)
 - Screenshots (mínimo 2, tamanho específico)
-- Ícone de alta resolução (512x512 PNG) — já disponível em `assets/icon-512.png`
+- Ícone de alta resolução (512x512 PNG) — já disponível em `app/assets/icon-512.png`
 - Imagem de capa (1024x500)
 
 **Classificação de conteúdo:**

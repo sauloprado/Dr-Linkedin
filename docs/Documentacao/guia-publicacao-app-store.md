@@ -76,9 +76,9 @@ Gera o `.ipa` como artefato do GitHub Actions (mesmo fluxo do `app-release-vXXX.
 
 ---
 
-## Pendência técnica encontrada: ícone com canal alfa
+## Pendência técnica resolvida: ícone com canal alfa
 
-O ícone atual em `ios/App/App/Assets.xcassets/AppIcon.appiconset/AppIcon-512@2x.png` está em **1024×1024 mas com transparência (canal alfa)**. A Apple **rejeita** ícones com alfa no App Store Connect — precisa ser achatado sobre um fundo opaco (ex.: `#0F1B2E`, mesma cor do splash screen) antes do envio. Isso ainda não foi corrigido.
+O ícone em `ios/App/App/Assets.xcassets/AppIcon.appiconset/AppIcon-512@2x.png` (1024×1024) já é gerado achatado sobre fundo branco opaco (sem canal alfa), evitando a rejeição da Apple no App Store Connect.
 
 ---
 
@@ -88,9 +88,9 @@ Script pronto: `generate-screenshots-ios.mjs` (mesmo princípio do `generate-scr
 
 | Classe de tela | Pasta gerada | Resolução | Obrigatório? |
 |---|---|---|---|
-| iPhone 6.9" (16/15 Pro Max) | `assets/screenshots-ios/6.9-iphone/` | 1320×2868 | Sim |
-| iPhone 6.7"/6.5" (14/15 Plus) | `assets/screenshots-ios/6.7-iphone/` | 1290×2796 | Sim |
-| iPad 13" | `assets/screenshots-ios/13-ipad/` | 2064×2752 | Só se o app suportar iPad |
+| iPhone 6.9" (16/15 Pro Max) | `app/assets/screenshots-ios/6.9-iphone/` | 1320×2868 | Sim |
+| iPhone 6.7"/6.5" (14/15 Plus) | `app/assets/screenshots-ios/6.7-iphone/` | 1290×2796 | Sim |
+| iPad 13" | `app/assets/screenshots-ios/13-ipad/` | 2064×2752 | Só se o app suportar iPad |
 
 > Apple ajusta esses tamanhos de tempos em tempos (novos modelos de iPhone/iPad). **Confirmar os valores exatos exigidos dentro do App Store Connect** no momento do upload, antes de gerar as imagens finais.
 

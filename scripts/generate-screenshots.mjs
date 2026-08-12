@@ -3,7 +3,7 @@ import { mkdirSync } from 'fs';
 
 const CHROME = 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe';
 const BASE   = 'http://localhost:3000/App%20Dr.%20LinkedIn.html';
-const OUT    = 'assets/screenshots';
+const OUT    = 'app/assets/screenshots';
 
 mkdirSync(OUT, { recursive: true });
 
@@ -43,4 +43,4 @@ for (const s of screens) {
 }
 
 await browser.close();
-console.log('\nScreenshots salvas em assets/screenshots/');
+console.log('\nScreenshots salvas em app/assets/screenshots/');

@@ -82,15 +82,15 @@ Site: https://sauloprado.github.io/Dr-Linkedin/
 
 | Asset | Arquivo | Dimensões |
 |---|---|---|
-| Ícone do app | `assets/icon-512.png` | 512×512px |
-| Recurso gráfico (feature graphic) | `assets/feature-graphic-1024x500.png` | 1024×500px |
-| Screenshot 1 — Home | `assets/screenshots/1-home.png` | 1080×2338px |
-| Screenshot 2 — Consultoria | `assets/screenshots/2-consultoria.png` | 1080×2338px |
-| Screenshot 3 — Livro | `assets/screenshots/3-livro.png` | 1080×2338px |
-| Screenshot 4 — Sobre | `assets/screenshots/4-sobre.png` | 1080×2338px |
-| Screenshot 5 — Contato | `assets/screenshots/5-contato.png` | 1080×2338px |
+| Ícone do app | `app/assets/icon-512.png` | 512×512px |
+| Recurso gráfico (feature graphic) | `app/assets/feature-graphic-1024x500.png` | 1024×500px |
+| Screenshot 1 — Home | `app/assets/screenshots/1-home.png` | 1080×2338px |
+| Screenshot 2 — Consultoria | `app/assets/screenshots/2-consultoria.png` | 1080×2338px |
+| Screenshot 3 — Livro | `app/assets/screenshots/3-livro.png` | 1080×2338px |
+| Screenshot 4 — Sobre | `app/assets/screenshots/4-sobre.png` | 1080×2338px |
+| Screenshot 5 — Contato | `app/assets/screenshots/5-contato.png` | 1080×2338px |
 
-> O `feature-graphic-1024x500.png` foi gerado redimensionando `github-cover.png` (original: 1280×640) via Pillow.
+> O `feature-graphic-1024x500.png` foi gerado redimensionando `brand/github-cover.png` (original: 1280×640) via Pillow.
 
 ---
 

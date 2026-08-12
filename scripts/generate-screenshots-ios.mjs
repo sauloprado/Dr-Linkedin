@@ -3,7 +3,7 @@ import { mkdirSync } from 'fs';
 
 const CHROME = 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe';
 const BASE   = 'http://localhost:3000/App%20Dr.%20LinkedIn.html';
-const OUT    = 'assets/screenshots-ios';
+const OUT    = 'app/assets/screenshots-ios';
 
 // Tamanhos exigidos pela App Store (classe de tela, não modelo exato).
 // CONFIRMAR no App Store Connect no momento do upload — a Apple ajusta essa

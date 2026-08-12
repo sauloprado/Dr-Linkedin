@@ -20,7 +20,7 @@ cd "c:\Users\saulo\OneDrive\Área de Trabalho\2026\00 - Dr Linkedin\Aplicativo\F
 ### Passo 2 — Subir o servidor
 
 ```
-npx.cmd serve . -l 3000 --no-clipboard
+npx.cmd serve app -l 3000 --no-clipboard
 ```
 
 Quando aparecer esta linha, está pronto:
@@ -63,7 +63,7 @@ npm start
 | Sintoma | Causa | Solução |
 |---------|-------|---------|
 | `ERR_CONNECTION_REFUSED` no navegador | Servidor não está rodando | Volte ao Passo 2 |
-| `npm.ps1 não pode ser carregado` | Política do PowerShell | Use `npx.cmd serve . -l 3000 --no-clipboard` |
+| `npm.ps1 não pode ser carregado` | Política do PowerShell | Use `npx.cmd serve app -l 3000 --no-clipboard` |
 | Página abre mas telas somem | Arquivo `site/` desatualizado | Fale com Claude Code |
 | Porta 3000 já em uso | Outro processo usando a porta | Troque por `-l 3001` e acesse na porta 3001 |
 
@@ -73,26 +73,32 @@ npm start
 
 ```
 Final/
-├── App Dr. LinkedIn.html   ← entrada principal (navegador)
-├── app.jsx                 ← lógica de navegação entre telas
-├── screens/                ← as 5 telas do app
-│   ├── home.jsx
-│   ├── consultoria.jsx
-│   ├── livro.jsx
-│   ├── sobre.jsx
-│   └── contato.jsx
-├── components/             ← peças reutilizáveis (ícones, tabbar)
-├── assets/                 ← imagens e ícones
-├── styles.css              ← visual do app
-├── site/                   ← cópia usada pelo Android (Capacitor)
-└── android/                ← projeto Android (para gerar APK)
+├── app/                     ← o app em si
+│   ├── App Dr. LinkedIn.html  ← entrada principal (navegador)
+│   ├── app.jsx                ← lógica de navegação entre telas
+│   ├── screens/                ← as 5 telas do app
+│   │   ├── home.jsx
+│   │   ├── consultoria.jsx
+│   │   ├── livro.jsx
+│   │   ├── sobre.jsx
+│   │   └── contato.jsx
+│   ├── components/             ← peças reutilizáveis (ícones, tabbar)
+│   ├── assets/                 ← imagens e ícones
+│   └── styles.css              ← visual do app
+├── site/                    ← cópia usada pelo Android/iOS (Capacitor)
+├── android/                 ← projeto Android (para gerar APK/AAB)
+├── ios/                     ← projeto iOS
+├── docs/                    ← documentação e guias de publicação
+├── scripts/                 ← scripts geradores (ícones, capa, screenshots)
+├── builds/                  ← pacotes .aab/.7z gerados localmente
+└── brand/                   ← logos, imagens de referência, material de marca
 ```
 
 ---
 
 ## Quando fizer alterações nos arquivos
 
-Se editar qualquer arquivo em `screens/`, `components/`, `app.jsx` ou `styles.css`:
+Se editar qualquer arquivo em `app/screens/`, `app/components/`, `app/app.jsx` ou `app/styles.css`:
 
 **1. Copiar para `site/`** (mantém o Android atualizado):
 ```
@@ -107,5 +113,5 @@ npx.cmd cap sync android
 
 O guia completo está em:
 ```
-Documentacao/Guia-Google-Play-Store.md
+docs/Documentacao/Guia-Google-Play-Store.md
 ```

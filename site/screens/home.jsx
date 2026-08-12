@@ -72,7 +72,7 @@ function HomeScreen() {
           lineHeight: 1,
           letterSpacing: '-0.015em',
         }}>
-          Dr. LinkedIn
+          Dr. Linkedin
         </h1>
 
         <h2 className="serif-heading" style={{
